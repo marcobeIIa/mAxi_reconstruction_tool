@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # SLURM options:
@@ -9,7 +8,7 @@
 #SBATCH --partition=lupm               # Choix de partition
 #SBATCH --nodelist=c1
 
-#SBATCH --cpus-per-task= 16            #Nombre de COEURS PAR NOEUD (Max 128)
+#SBATCH --cpus-per-task=16            #Nombre de COEURS PAR NOEUD (Max 128)
 #SBATCH -N 1                          #Nombre de NOEUDS (Max 4)
 
 #SBATCH --ntasks-per-node=1
@@ -25,6 +24,8 @@
 
 ###################
 cd ~/mAxi_reconstruction_tool
+source ~/.bashrc
+conda init
 conda activate mpi_clean
 
-mpirun -np 16 python main.py
+mpirun -np 16 python main.py --o ~/mAxi_reconstruction_tool/output1 --c /home/bella/chains_mp/planck_TTTEEElensing_mAxi_shooting2025-11-01/2025-11-01_10000__8.txt

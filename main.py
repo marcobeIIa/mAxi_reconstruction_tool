@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import argparse
 
 # --- Import your local modules ---
 from a_fixed_parameters_to_ini import main as make_fixed_ini
@@ -8,16 +9,44 @@ from c_ini_to_python_dict import main as ini_to_dict
 import subprocess
 import numpy as np
 
-# --- CONFIGURATION ---
-base_dir = Path("~/").expanduser()
-chain_dir = base_dir / "chains_mp/planck_TTTEEElensing_mAxi_shooting2025-11-01"
-tools_dir = base_dir / "tools"
-output_dir = tools_dir / "output"
+# --- CONFIGURATION --- WITHOUT input
+#base_dir = Path("~/").expanduser()
+#chain_dir = base_dir / "chains_mp/planck_TTTEEElensing_mAxi_shooting2025-11-01"
+#tools_dir = base_dir / "tools"
+#output_dir = tools_dir / "output"
 
-chain_file = chain_dir / "2025-11-01_10000__8.txt"
+#chain_file = chain_dir / "2025-11-01_10000__8.txt"
+#log_param_file = chain_dir / "log.param"
+#output_ini_fixed = output_dir / "output_fixed.ini"
+#output_ini_final = tools_dir / "output.ini"
+
+# --- CONFIGURATION --- WITH input
+# feed python main.py -c chain_file -o output_dir
+# where -c is the (path to) chain file whcih we want to use for sampling
+# -o is the output directory (doesn't need to exist yet!)
+def parse_args():
+    parser = argparse.ArgumentParser(description="Run mAxi reconstruction tool")
+    parser.add_argument("--c", type=str, required=True,
+                        help="Directory where the chain files are located")
+    parser.add_argument("--o", type=str, required=True,
+                        help="Directory where output .ini files will be saved")
+    return parser.parse_args()
+
+args = parse_args()
+
+chain_file = Path(args.c).expanduser()
+chain_dir = chain_file.parent
+output_dir = Path(args.o).expanduser()
+tools_dir = Path(__file__).parent  # main.py location
+
+#chain_file = chain_dir / "2025-11-01_10000__8.txt"
 log_param_file = chain_dir / "log.param"
 output_ini_fixed = output_dir / "output_fixed.ini"
-#output_ini_final = tools_dir / "output.ini"
+
+# Make sure output directory exists
+import os
+os.makedirs(output_dir, exist_ok=True)
+
 
 # How many cosmologies to process
 N_SAMPLES = 100
