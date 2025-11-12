@@ -20,7 +20,7 @@ output_ini_fixed = output_dir / "output_fixed.ini"
 #output_ini_final = tools_dir / "output.ini"
 
 # How many cosmologies to process
-N_SAMPLES = 100
+N_SAMPLES = 20
 
 npz_file = "all_backgrounds.npz"
     

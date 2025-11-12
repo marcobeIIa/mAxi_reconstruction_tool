@@ -27,7 +27,7 @@ for i in range(len(data["z"])):
         color='grey',
     )
 plt.xlabel(r"$\log_{10}(1+z)$", fontsize=14)
-#plt.xlim(1,6)
+plt.xlim(1,6)
 #plt.ylim(0,0.1)
 plt.ylabel(r"$\rho_\mathrm{tot}$", fontsize=14)
 plt.title("Total EDE energy density over redshift", fontsize=16)

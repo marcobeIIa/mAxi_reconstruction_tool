@@ -11,7 +11,6 @@ EDEm.set(params_mEDE)
 
 bg_m = EDEm.get_background()
 
-print(bg_m.keys())
 derived = EDEm.get_current_derived_parameters(['z_eq','z_rec'])
 
 
@@ -78,3 +77,7 @@ np.savez("all_backgrounds.npz",
          rho_tot=np.array(all_rho_tot, dtype=object),
          #rho_components=np.array(all_rho_components, dtype=object))
          )
+# clean up
+EDEm.empty()
+del EDEm
+print("cleaned the cosmology!")
