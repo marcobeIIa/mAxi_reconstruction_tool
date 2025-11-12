@@ -9,8 +9,8 @@ import subprocess
 import numpy as np
 
 # --- CONFIGURATION ---
-base_dir = Path("~/uni/1_master_thesis").expanduser()
-chain_dir = base_dir / "montepython_chains/chains_mp/planck_TTTEEElensing_mAxi_shooting2025-11-01"
+base_dir = Path("~/").expanduser()
+chain_dir = base_dir / "chains_mp/planck_TTTEEElensing_mAxi_shooting2025-11-01"
 tools_dir = base_dir / "tools"
 output_dir = tools_dir / "output"
 

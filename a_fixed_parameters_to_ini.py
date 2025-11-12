@@ -40,6 +40,8 @@ def read_params(log_param_file):
     return fixed_params
 
 def write_fixed_ini(fixed_params,output_ini):
+    # ensure the parent directory exists
+    os.makedirs(os.path.dirname(output_ini), exist_ok=True)
     with open(output_ini, "w") as f:
         f.write("# CLASS ini file: first part, constant parameters (from log.param)\n\n")
         for key, val in fixed_params.items():
