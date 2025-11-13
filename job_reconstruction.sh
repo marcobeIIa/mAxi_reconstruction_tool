@@ -28,4 +28,9 @@ source ~/.bashrc
 conda init
 conda activate mpi_clean
 
-mpirun -np 16 python main.py --o ~/mAxi_reconstruction_tool/output1 --c /home/bella/chains_mp/planck_TTTEEElensing_mAxi_shooting2025-11-01/2025-11-01_10000__8.txt
+python main.py \
+    --o ~/mAxi_reconstruction_tool/output1 \
+    --c /home/bella/chains_mp/planck_TTTEEElensing_mAxi_shooting2025-11-01/2025-11-01_10000__8.txt \
+    --n 1000 \
+    --workers 16
+

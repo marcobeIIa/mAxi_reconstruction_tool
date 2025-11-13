@@ -4,6 +4,7 @@ from pathlib import Path
 import argparse
 import subprocess
 import numpy as np
+import glob
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
 # --- Import your local modules ---
@@ -32,12 +33,27 @@ tools_dir = Path(__file__).parent  # main.py location
 log_param_file = chain_dir / "log.param"
 output_ini_fixed = output_dir / "output_fixed.ini"
 
+# Clean the output directory before writing anything new
+
 os.makedirs(output_dir, exist_ok=True)
+import shutil
+
+# Clean output directory
+for item in output_dir.iterdir():
+    try:
+        if item.is_file() or item.is_symlink():
+            item.unlink()
+        elif item.is_dir():
+            shutil.rmtree(item)
+    except Exception as e:
+        print(f"⚠️ Could not remove {item}: {e}")
+
+print(f"Cleaned output directory: {output_dir}")
 
 npz_file = "all_backgrounds.npz"
 if os.path.exists(npz_file):
     os.remove(npz_file)
-    print(f"🗑 Cleared old file: {npz_file}")
+    print(f"Cleared old file: {npz_file}")
 
 
 def process_sample(i):
@@ -53,6 +69,11 @@ def process_sample(i):
     ini_to_dict(output_ini_final)
 
     print(f"[Sample {i}] Running CLASS...")
+    sample_index = i  # 0..N-1
+    cmd = ["python3", str(tools_dir / "d_run_class.py"),
+           "--sample-index", str(sample_index),
+           "--out-dir", str(output_dir)]
+    subprocess.run(cmd, check=True)
     subprocess.run(["python3", str(tools_dir / "d_run_class.py")], check=True)
 
     return weight
@@ -78,13 +99,32 @@ def main():
                 print(f"[Sample {i}] Completed successfully.")
             except Exception as e:
                 print(f"[Sample {i}] Failed: {e}")
+    all_z, all_rho_tot, all_rho_components = [], [], []
+    for f in sorted(glob.glob(os.path.join(output_dir, "background_sample_*.npz"))):
+        data = np.load(f, allow_pickle=True)
+        all_z.append(data["z"])
+        all_rho_tot.append(data["rho_tot"])
+        all_rho_components.append(data.get("rho_components", []))
+
+    np.savez(os.path.join(output_dir,"all_backgrounds.npz"),
+             z=np.array(all_z, dtype=object),
+             rho_tot=np.array(all_rho_tot, dtype=object),
+             rho_components=np.array(all_rho_components, dtype=object))
+
 
     # Save all weights
-    np.savez("all_weights.npz", weights=np.array(weights_array, dtype=object))
+#    np.savez("all_weights.npz", weights=np.array(weights_array, dtype=object))
+    np.savez(str(output_dir / "all_weights.npz"), weights=np.array(weights_array, dtype=object))
+
 
     print("\n=== STEP 5: Done! Background data stored in all_backgrounds.npz ===")
     print("Next step: run e_plot.py to visualize results.")
-    subprocess.run(["python3", str(tools_dir / "e_plot.py")], check=True)
+#    subprocess.run(["python3", str(tools_dir / "e_plot.py")], check=True)
+    subprocess.run(
+        ["python3", str(tools_dir / "e_plot.py")],
+        cwd=str(output_dir),  # <-- change working directory
+        check=True
+    )
     print("✅ Plotting completed.")
 
 

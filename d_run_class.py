@@ -1,9 +1,19 @@
 import json
 import numpy as np
 from classy import Class
+import argparse
+import os
 
 with open("params_mEDE.json") as f:
     params_mEDE = json.load(f)
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--sample-index", type=int, default=None)
+parser.add_argument("--out-dir", type=str, default=".")
+args = parser.parse_args()
+
+sample_index = args.sample_index
+outdir = args.out_dir
 
 EDEm = Class()
 EDEm.set(params_mEDE)
@@ -71,12 +81,16 @@ all_z.append(z)
 all_rho_tot.append(rho_tot)
 all_rho_components.append(np.array(rho_components))
 
+fname = os.path.join(outdir, f"background_sample_{sample_index}.npz")
+np.savez(fname, z=z, rho_tot=rho_tot, rho_components=np.array(rho_components, dtype=object))
+print("Saved", fname)
+
 # Save everything again
-np.savez("all_backgrounds.npz",
-         z=np.array(all_z, dtype=object),
-         rho_tot=np.array(all_rho_tot, dtype=object),
+#np.savez("all_backgrounds.npz",
+#         z=np.array(all_z, dtype=object),
+#         rho_tot=np.array(all_rho_tot, dtype=object),
          #rho_components=np.array(all_rho_components, dtype=object))
-         )
+#         )
 # clean up
 EDEm.empty()
 del EDEm
