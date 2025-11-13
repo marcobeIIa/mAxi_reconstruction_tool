@@ -103,9 +103,10 @@ def dict_writer(chain_file,log_param_file):
 
     return param_dict,weights
 
-def write_ini(param_dict,directory_out,output_ini_fixed,output_ini_final):
+def write_ini(param_dict,directory_out,output_ini_fixed,output_ini_final,output_ini_temp):
     # === 6. Write temporary CLASS .ini file ===
-    output_ini_temp = os.path.join(directory_out, "output_temp.ini")
+    #output_ini_temp = os.path.join(directory_out, "output_temp.ini")
+
 
     with open(output_ini_temp, "w") as f:
         f.write("# CLASS input file auto-generated from MontePython chain\n")
@@ -130,7 +131,8 @@ def write_ini(param_dict,directory_out,output_ini_fixed,output_ini_final):
 
     print(f"✅ Merged into final CLASS .ini file: {output_ini_final}")
 
-def main(chain_file,log_param_file,directory_out,output_ini_fixed,output_ini_final):
+def main(chain_file,log_param_file,directory_out,output_ini_fixed,output_ini_final,sample_index):
+    output_ini_temp = os.path.join(directory_out, f"output_temp_{sample_index}.ini")
     param_dict,weights = dict_writer(chain_file,log_param_file)
-    write_ini(param_dict,directory_out,output_ini_fixed,output_ini_final)
+    write_ini(param_dict,directory_out,output_ini_fixed,output_ini_final,output_ini_temp)
     return weights

@@ -63,7 +63,7 @@ def process_sample(i):
     """
     output_ini_final = output_dir / f"output_sample_{i}.ini"
     print(f"[Sample {i}] Generating .ini...")
-    weight = make_variable_ini(chain_file, log_param_file, tools_dir, output_ini_fixed, output_ini_final)
+    weight = make_variable_ini(chain_file, log_param_file, tools_dir, output_ini_fixed, output_ini_final,i)
 
     print(f"[Sample {i}] Converting .ini to dict...")
     ini_to_dict(output_ini_final)
