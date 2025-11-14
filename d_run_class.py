@@ -62,7 +62,7 @@ all_H.append(H_small)
 np.savez("all_backgrounds.npz",
          z=np.array(all_z, dtype=object),
          rho_tot=np.array(all_rho_tot, dtype=object),
-         H=np.array(all_H, dtype=object))     
+         H=np.array(all_H, dtype=object),     
          #rho_components=np.array(all_rho_components, dtype=object))
          )
 
