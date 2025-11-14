@@ -49,7 +49,7 @@ os.makedirs(output_dir, exist_ok=True)
 
 
 # How many cosmologies to process
-N_SAMPLES = 100
+N_SAMPLES = 1000
 
 npz_file = "all_backgrounds.npz"
     
