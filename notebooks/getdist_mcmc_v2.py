@@ -19,6 +19,20 @@
 # ### matplotlib settings and test run (suppressed)
 
 # +
+among_us_colors = [
+    "#c51111",  # red
+    "#132ed1",  # blue
+    "#117f2d",  # green
+    "#ed54ba",  # pink
+    "#ef7d0d",  # orange
+    "#f5f557",  # yellow
+    "#3a474e",  # black / dark gray (fixed from 3r474e)
+    "#d6e0f0",  # white / light gray
+    "#6b2fbb",  # purple
+    "#71491e",  # brown
+    "#38fedc",  # cyan
+    "#50ef39",  # lime
+]
 from getdist import MCSamples, plots
 import numpy as np
 import matplotlib as mpl
@@ -52,6 +66,22 @@ samples = MCSamples(samples=params, names=paramnames, labels=clean_labels)
 
 #plt.show()
 # -
+
+among_us_colors = [
+    "#c51111",  # red
+    "#132ed1",  # blue
+    "#117f2d",  # green
+    "#ed54ba",  # pink
+    "#ef7d0d",  # orange
+    "#f5f557",  # yellow
+    "#3f474e",  # black / dark gray
+    "#d6e0f0",  # white / light gray
+    "#6b2fbb",  # purple
+    "#71491e",  # brown
+    "#38fedc",  # cyan
+    "#50ef39",  # lime
+]
+
 
 # ### Functions: load chains and plot H0 posteriors
 
@@ -446,55 +476,6 @@ latex_labels_1 = {
 
 # # 9 Axions Pantheon+ vs Panthoen+ SH0ES vs Pantheon+ SH0ES DESI
 
-# +
-param_names = ['H0','Omega_m','rs_star','sigma8','M','fraction_maxion_ac__4']
-param_indices = {name: i for i, name in enumerate(latex_labels) if name in param_names}
-
-samp_1 = load_samples(
-    "/Users/bellamarco01/uni/1_master_thesis/montepython_chains/"
-    "chains_mp/9_axions/planck_TTTEEElensing_pantheon_plus_2025-12-19/*__*.txt",
-    param_indices
-)
-
-samp_2 = load_samples(
-    "/Users/bellamarco01/uni/1_master_thesis/montepython_chains/"
-    "chains_mp/9_axions_test/planck_TTTEEElensing_pantheon_plus_sh0es_2025-12-23/*__*.txt",
-    param_indices
-)
-
-samp_3 = load_samples(
-    "/Users/bellamarco01/uni/1_master_thesis/montepython_chains/"
-    "chains_mp/9_axions/planck_TTTEEElensing_pantheon_plus_sh0es_desi_2025-12-19/*__*.txt",
-    param_indices
-)
-
-g = plots.get_subplot_plotter()
-
-g.triangle_plot(
-    [samp_1, samp_2, samp_3],
-    params=param_names,
-    filled=True,
-    legend_labels=[
-        "Pantheon+",
-        "Pantheon+ SH0ES",
-        "Pantheon+ SH0ES DESI"
-    ],
-    contour_colors=[colors[0],colors[1],colors[2]]
-)
-
-
-g.settings.lab_fontsize = 14       # axis labels
-g.settings.axes_fontsize = 12      # tick labels
-g.settings.legend_fontsize = 12    # legend
-g.settings.legend_loc = (1.05, 1)  # move legend outside
-g.settings.alpha_filled_add = 0.7   # filled contours transparency
-g.settings.linewidth = 2
-
-
-plt.show()
-
-# -
-
 # # Analysis of the chains
 #
 # here I am mainly concerned with plotting H0 distributions.
@@ -528,7 +509,7 @@ g.triangle_plot(
         "Pantheon+ SH0ES old",
         "Pantheon+ SH0ES new"
     ],
-    contour_colors=[colors[0],colors[1]]
+    contour_colors=among_us_colors[:2]
 )
 
 
@@ -567,7 +548,7 @@ g.triangle_plot(
         "Pantheon+ SH0ES old",
         "Pantheon+ SH0ES new"
     ],
-    contour_colors=[colors[0],colors[1]]
+    contour_colors=among_us_colors[:2]
 )
 
 
@@ -688,5 +669,7 @@ print("\nRun 2 R-1:")
 for param, value in r1_2.items():
     print(f"  {param}: {value:.4f} {'✓' if value < 1.1 else '✗'}")
 # -
+
+
 
 
