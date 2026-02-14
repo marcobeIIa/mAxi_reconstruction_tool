@@ -180,6 +180,9 @@ from pathlib import Path
 BASE = Path(
     "/Users/bellamarco01/uni/1_master_thesis/montepython_chains/chains_mp/varying_zc"
 )
+BASE_n = Path(
+    "/Users/bellamarco01/uni/1_master_thesis/montepython_chains/chains_mp/varying_zc_npipe"
+)
 
 # # 1 axion
 # chain_1pd  = BASE / "planck_TTTEEElensing_pantheon_plus_desi_2026-01-14"
@@ -216,8 +219,6 @@ chain_3psd_old = BASE / "3_axions/planck_TTTEEElensing_pantheon_plus_sh0es_desi_
 # 3 axions (latest = 2026-01-16)
 chain_3pd  = BASE / "3_axions/v2/planck_TTTEEElensing_pantheon_plus_desi_2026-01-26"
 chain_3psd = BASE / "3_axions/v2/planck_TTTEEElensing_pantheon_plus_sh0es_desi_2026-01-26"
-chain_3pd_proc  = BASE / "3_axions/v2/planck_TTTEEElensing_pantheon_plus_desi_2026-01-22"
-chain_3psd_proc = BASE / "3_axions/v2/planck_TTTEEElensing_pantheon_plus_sh0es_desi_2026-01-22"
 
 # 4 axions (latest)
 chain_4pd  = BASE / "4_axions/planck_TTTEEElensing_pantheon_plus_desi_2026-01-22"
@@ -229,12 +230,35 @@ chain_4psd_v2 = BASE / "4_axions/v2/planck_TTTEEElensing_pantheon_plus_sh0es_des
 chain_4pd_v2proc  = BASE / "4_axions/v2/planck_TTTEEElensing_pantheon_plus_desi_2026-01-23"
 chain_4psd_v2proc = BASE / "4_axions/v2/planck_TTTEEElensing_pantheon_plus_sh0es_desi_2026-01-23"
 
+
+# runs with NPIPE
+
+# 1 axion
+chain_1npd  = BASE_n / "1_axion/planck_TTTEEElensing_pantheon_plus_desi_2026-01-30"
+chain_1npsd = BASE_n / "1_axion/planck_TTTEEElensing_pantheon_plus_sh0es_desi_2026-01-30"
+
+# 2 axions
+chain_2npd  = BASE_n / "2_axions/planck_TTTEEElensing_pantheon_plus_desi_2026-02-02"
+chain_2npsd = BASE_n / "2_axions/planck_TTTEEElensing_pantheon_plus_sh0es_desi_2026-02-02"
+
+# 3 axions (latest = 2026-01-16)
+chain_3npd  = BASE_n / "3_axions_v2/planck_TTTEEElensing_pantheon_plus_desi_2026-02-02"
+chain_3npsd = BASE_n / "3_axions_v2/planck_TTTEEElensing_pantheon_plus_sh0es_desi_2026-02-02"
+
+# 2 axions
+chain_2npd_proc  = BASE_n / "2_axions/planck_TTTEEElensing_pantheon_plus_desi_2026-01-30"
+chain_2npsd_proc = BASE_n / "2_axions/planck_TTTEEElensing_pantheon_plus_sh0es_desi_2026-01-30"
+
+# 3 axions (latest = 2026-01-16)
+chain_3npd_proc  = BASE_n / "3_axions_v2/planck_TTTEEElensing_pantheon_plus_desi_2026-01-30"
+chain_3npsd_proc = BASE_n / "3_axions_v2/planck_TTTEEElensing_pantheon_plus_sh0es_desi_2026-01-30"
+
 # +
 #param_names = ['fraction_maxion_ac__1', 'fraction_maxion_ac__2', 'fraction_maxion_ac__3', 'log10_maxion_ac__1', 'log10_maxion_ac__2', 'log10_maxion_ac__3']
-#param_names_1 = ['fraction_maxion_ac__1', 'log10_maxion_ac__1']
+param_names = ['fraction_maxion_ac__1', 'log10_maxion_ac__1']
 param_names_4 = ['fraction_maxion_ac__1', 'fraction_maxion_ac__2','fraction_maxion_ac__3', 'fraction_maxion_ac__4', 
                  'log10_maxion_ac__1', 'log10_maxion_ac__2','log10_maxion_ac__3', 'log10_maxion_ac__4']
-param_names =['H0','Omega_m','sigma8','rs_star']
+#param_names =['H0','Omega_m','sigma8','rs_star']
 
 samp_0pd = load_samples(
      chain_0pd,
@@ -260,7 +284,7 @@ samp_2pd = load_samples(
 )
 samp_2psd = load_samples(
     chain_2psd,
-    param_names_4
+    param_names
 )
 
 samp_3pd = load_samples(
@@ -269,7 +293,7 @@ samp_3pd = load_samples(
 )
 samp_3psd = load_samples(
     chain_3psd,
-    param_names_4
+    param_names
 )
 
 samp_4pd = load_samples(
@@ -278,7 +302,7 @@ samp_4pd = load_samples(
 )
 samp_4psd = load_samples(
     chain_4psd,
-    param_names_4
+    param_names
 )
 
 samp_4pd_v2 = load_samples(
@@ -287,19 +311,10 @@ samp_4pd_v2 = load_samples(
 )
 samp_4psd_v2 = load_samples(
     chain_4psd_v2,
-    param_names_4
-)
-
-
-
-samp_3pd_proc = load_samples(
-    chain_3pd_proc,
     param_names
 )
-samp_3psd_proc = load_samples(
-    chain_3psd_proc,
-    param_names
-)
+
+
 
 samp_4pd_v2proc = load_samples(
     chain_4pd_v2proc,
@@ -310,42 +325,93 @@ samp_4psd_v2proc = load_samples(
     param_names
 )
 
+#NPIPE
+
+samp_1npd = load_samples(
+     chain_1npd,
+     param_names
+ )
+samp_1npsd = load_samples(
+    chain_1npsd,
+    param_names
+)
+
+samp_2npd = load_samples(
+    chain_2npd,
+    param_names
+)
+samp_2npsd = load_samples(
+    chain_2npsd,
+    param_names
+)
+
+samp_3npd = load_samples(
+    chain_3npd,
+    param_names
+)
+samp_3npsd = load_samples(
+    chain_3npsd,
+    param_names
+)
 
 
-# + jupyter={"source_hidden": true}
+samp_2npd_proc = load_samples(
+    chain_2npd_proc,
+    param_names
+)
+samp_2npsd_proc = load_samples(
+    chain_2npsd_proc,
+    param_names
+)
+
+samp_3npd_proc = load_samples(
+    chain_3npd_proc,
+    param_names
+)
+samp_3npsd_proc = load_samples(
+    chain_3npsd_proc,
+    param_names
+)
+
+
+# +
 from getdist import plots
 import matplotlib.pyplot as plt
 
 g = plots.get_subplot_plotter()
+param_names = ['fraction_maxion_ac__1', 'log10_maxion_ac__1','fraction_maxion_ac__2', 'log10_maxion_ac__2']
 
+samp_1npd = load_samples(
+     chain_1npd,
+     param_names
+ )
+samp_1npsd = load_samples(
+    chain_1npsd,
+    param_names
+)
+
+samp_2npd = load_samples(
+    chain_2npd,
+    param_names
+)
+samp_2npsd = load_samples(
+    chain_2npsd,
+    param_names
+)
 # Make all text bigger
 g.settings.axes_fontsize = 20     # tick labels
 g.settings.lab_fontsize = 22      # axis labels
 g.settings.legend_fontsize = 18   # legend
 g.settings.figure_legend_frame = False  # optional, cleaner look
 
+
 g.triangle_plot(
-    [samp_1pd, samp_1psd],
+    [samp_1npsd, samp_2npsd],
     params=param_names,
     filled=True,
     legend_labels=[
-        "1pd",
-        "1psd"
-    ]
-)
-
-plt.show()
-
-
-# +
-
-g.triangle_plot(
-    [samp_2pd, samp_2psd],
-    params=param_names,
-    filled=True,
-    legend_labels=[
-        "2pd",
-        "2psd"
+        "1 axion npipe sh0es desi",
+        "2 axion NPIPE sh0es desi"
     ]
 )
 
@@ -354,12 +420,12 @@ plt.show()
 
 # +
 g.triangle_plot(
-    [samp_3pd, samp_3psd],
+    [samp_2psd, samp_2npsd],
     params=param_names,
     filled=True,
     legend_labels=[
-        "3pd",
-        "3psd"
+        "2psd, Planck 18",
+        "2psd, NPIPE"
     ]
 )
 
@@ -367,21 +433,17 @@ plt.show()
 
 
 # +
-
 g.triangle_plot(
-    [samp_4psd_v2,samp_3psd,samp_2psd],
-    params=param_names_4,
+    [samp_3psd,samp_3npsd],
+    params=param_names,
     filled=True,
     legend_labels=[
-        "4psd v2",
-        "3psd v2",
-        "2psd v2"
+        "3psd planck 18",
+        "3psd npipe",
     ]
 )
 
 plt.show()
-
-
 
 # +
 min_loglike_pd = []
@@ -390,8 +452,8 @@ min_loglike_psd = []
 min_loglike_psd_procoli = []
 chains_pd = [chain_0pd,chain_1pd, chain_2pd, chain_3pd, chain_4pd]
 chains_psd = [chain_0psd,chain_1psd, chain_2psd, chain_3psd, chain_4psd]
-chains_pd_proc = [chain_0pd,chain_1pd, chain_2pd, chain_3pd_proc, chain_4pd_v2proc]
-chains_psd_proc = [chain_0psd,chain_1psd, chain_2psd, chain_3psd_proc, chain_4psd]
+chains_pd_proc = [chain_0pd,chain_1pd, chain_2pd, chain_3pd, chain_4pd]
+chains_psd_proc = [chain_0psd,chain_1psd, chain_2psd, chain_3psd, chain_4psd]
 for i in range(5):
     chain_pd = chains_pd[i]
     chain_psd = chains_psd[i]
@@ -414,19 +476,20 @@ chi2_pd_procoli  = 2 * np.array(min_loglike_pd_procoli)
 chi2_psd = 2 * np.array(min_loglike_psd)
 chi2_psd_procoli  = 2 * np.array(min_loglike_psd_procoli)
 
+
 plt.figure(figsize=(7, 5))
 
 min=0
 max=5
-# Pantheon+ DESI
-plt.plot(
-    n_axions[min:max],
-    chi2_pd[min:max],
-    color="C0",
-    marker="o",
-    lw=2,
-    label="Pantheon+ DESI"
-)
+# # Pantheon+ DESI
+# plt.plot(
+#     n_axions[min:max],
+#     chi2_pd[min:max],
+#     color="C0",
+#     marker="o",
+#     lw=2,
+#     label="Pantheon+ DESI"
+# )
 
 plt.plot(
     n_axions[min:max], 
@@ -434,20 +497,20 @@ plt.plot(
     color="C0",
     marker="o",
     lw=2,
-    linestyle="--",
+    # linestyle="--",
     alpha=0.5,
     label="Pantheon+ DESI (procoli)"
 )
 
 # Pantheon+ DESI + SH0ES
-plt.plot(
-    n_axions[min:max],
-    chi2_psd[min:max],
-    color="C1",
-    marker="s",
-    lw=2,
-    label="Pantheon+ DESI + SH0ES"
-)
+# plt.plot(
+#     n_axions[min:max],
+#     chi2_psd[min:max],
+#     color="C1",
+#     marker="s",
+#     lw=2,
+#     label="Pantheon+ DESI + SH0ES"
+# )
 
 plt.plot(
     n_axions[min:max],
@@ -455,7 +518,7 @@ plt.plot(
     color="C1",
     marker="s",
     lw=2,
-    linestyle="--",
+    # linestyle="--",
     alpha=0.5,
     label="Pantheon+ DESI + SH0ES (procoli)"
 )
@@ -467,8 +530,121 @@ plt.legend()
 plt.grid(alpha=0.3)
 plt.ylim(2434,2445)
 plt.tight_layout()
+plt.title("1,2,3,4 axions, Planck+Pantheon+ with/without sh0es")
 plt.show()
 
+print(chi2_psd_procoli[max-2],chi2_psd_procoli[max-3])
+
+# +
+min_loglike_pd = []
+min_loglike_psd = []
+min_loglike_npd = []
+min_loglike_npsd = []
+chains3_pd = [chain_1pd, chain_2pd, chain_3pd]
+chains3_psd = [chain_1psd, chain_2psd, chain_3psd]
+chains3_npd = [chain_1npd, chain_2npd_proc, chain_3npd_proc]
+chains3_npsd = [chain_1npsd, chain_2npsd_proc, chain_3npsd_proc]
+for i in range(3):
+    chain_pd = chains3_pd[i]
+    chain_psd = chains3_psd[i]
+    chain_npd = chains3_npd[i]
+    chain_npsd = chains3_npsd[i]
+
+    min_loglike_pd.append(find_min_loglike(chain_pd,useProcoli=True))
+    min_loglike_psd.append(find_min_loglike(chain_psd,useProcoli=True))
+    min_loglike_npd.append(find_min_loglike(chain_npd,useProcoli=True))
+    min_loglike_npsd.append(find_min_loglike(chain_npsd,useProcoli=True))
+    ####no procoli for 4psd yet###
+
+n_axions = np.arange(1, 4)
+# convert to chi^2
+chi2_pd  = 2 * np.array(min_loglike_pd)
+chi2_psd = 2 * np.array(min_loglike_psd)
+chi2_npd  = 2 * np.array(min_loglike_npd)
+chi2_npsd = 2 * np.array(min_loglike_npsd)
+
+min=0
+max=3
+delta_chi2 = [chi2_pd, chi2_psd] - chi2_pd[min]
+delta_chi2_n = [chi2_npd, chi2_npsd] - chi2_npd[min]
+
+
+fig = plt.figure(figsize=(7, 5))
+
+# Pantheon+ DESI
+plt.plot(
+    n_axions[min:max],
+    delta_chi2[0][min:max],
+    color="C0",
+    marker="o",
+    lw=2,
+    label="Pantheon+ DESI"
+)
+
+plt.plot(
+    n_axions[min:max],
+    delta_chi2_n[0][min:max],
+    color="C0",
+    marker="o",
+    lw=2,
+    linestyle="--",
+    alpha=0.5,
+    label="Pantheon+ DESI (npipe)"
+)
+
+plt.plot(
+    n_axions[min:max], 
+    delta_chi2_n[1][min:max],
+    color="C1",
+    marker="o",
+    lw=2,
+    linestyle="--",
+    alpha=0.5,
+    label="Pantheon+ DESI SH0ES (npipe)"
+)
+
+# Pantheon+ DESI + SH0ES
+plt.plot(
+    n_axions[min:max],
+    delta_chi2[1][min:max],
+    color="C1",
+    marker="o",
+    lw=2,
+    label="Pantheon+ DESI + SH0ES"
+)
+
+
+plt.xlabel("Number of axions")
+plt.ylabel(r"$\chi^2_{\mathrm{min}} - \chi^2_{bl}$")
+plt.xticks(n_axions)
+plt.legend()
+plt.grid(alpha=0.3)
+#plt.ylim(2434,2445)
+#plt.tight_layout()
+plt.title("1,2,3 axions, Planck vs NPIPE")
+plt.show()
+print("delta chi 2, 3 vs 2 axions pd: ", chi2_npd[0]-chi2_npsd[0])
+
+### baseline = 1 axion, Planck18/NPIPE + Pantheon+ 
+
+# + vscode={"languageId": "raw"} active=""
+# what we have is 
+#             ---------------------------------------------
+#                         ########3 axions#######
+#             ---------------------------------------------
+# log10ac    -3.409298e+00   -3.857014e+00   -4.224231e+00
+# fraction    4.452009e-02    3.665896e-02    1.346242e-02
+#
+#
+#             ---------------------------------------------
+#                         ########2 axions#######
+#             ---------------------------------------------
+# log10ac    -3.396862e+00   -3.870249e+00
+# fraction    3.788598e-02    5.426634e-02
+#
+#
+# i think the third axion is ruining the fit? mcmc is never gonna sample fraction = 0... 
+# so the models are not reallyyyyyy nested?
 
 # +
 

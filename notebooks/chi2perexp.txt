@@ -1,0 +1,56 @@
+1pd 
+-> for  Planck_CamSpec_NPIPE12_7_TTTEEE :  loglkl= -5620.022099029061 ,  chi2eff= 11240.044198058122
+-> for  Planck_lowl_EE :  loglkl= -198.44175178504682 ,  chi2eff= 396.88350357009364
+-> for  Planck_lowl_TT :  loglkl= -10.955546506750153 ,  chi2eff= 21.911093013500306
+-> for  Planck_lensing :  loglkl= -4.91424856258667 ,  chi2eff= 9.82849712517334
+-> for  Pantheon_Plus_test :  loglkl= -706.493521956968 ,  chi2eff= 1412.987043913936
+-> for  desi_2025_gaussian_bao_all :  loglkl= -6.036907731472104 ,  chi2eff= 12.073815462944207
+-> Total:  loglkl= -6546.864075571885 ,  chi2eff= 13093.72815114377
+
+1psd
+-> for  Planck_CamSpec_NPIPE12_7_TTTEEE :  loglkl= -5623.057255848778 ,  chi2eff= 11246.114511697557
+-> for  Planck_lowl_EE :  loglkl= -198.41627063670248 ,  chi2eff= 396.83254127340496
+-> for  Planck_lowl_TT :  loglkl= -10.484156888620646 ,  chi2eff= 20.968313777241292
+-> for  Planck_lensing :  loglkl= -4.952611140480144 ,  chi2eff= 9.905222280960288
+-> for  Pantheon_Plus_test :  loglkl= -707.0446370780919 ,  chi2eff= 1414.0892741561838
+-> for  sh0es :  loglkl= -1.0455294086267293 ,  chi2eff= 2.0910588172534585
+-> for  desi_2025_gaussian_bao_all :  loglkl= -5.233543766963093 ,  chi2eff= 10.467087533926186
+-> Total:  loglkl= -6550.234004768264 ,  chi2eff= 13100.468009536527
+
+2pd
+-> for  Planck_CamSpec_NPIPE12_7_TTTEEE :  loglkl= -5619.582898808384 ,  chi2eff= 11239.165797616768
+-> for  Planck_lowl_EE :  loglkl= -198.4382873107301 ,  chi2eff= 396.8765746214602
+-> for  Planck_lowl_TT :  loglkl= -10.813326349372488 ,  chi2eff= 21.626652698744977
+-> for  Planck_lensing :  loglkl= -4.975640045289128 ,  chi2eff= 9.951280090578257
+-> for  Pantheon_Plus_test :  loglkl= -706.6192028629312 ,  chi2eff= 1413.2384057258623
+-> for  desi_2025_gaussian_bao_all :  loglkl= -5.8430825667840205 ,  chi2eff= 11.686165133568041
+-> Total:  loglkl= -6546.27243794349 ,  chi2eff= 13092.54487588698
+
+2psd
+-> for  Planck_CamSpec_NPIPE12_7_TTTEEE :  loglkl= -5620.879709488505 ,  chi2eff= 11241.75941897701
+-> for  Planck_lowl_EE :  loglkl= -198.321008192861 ,  chi2eff= 396.642016385722
+-> for  Planck_lowl_TT :  loglkl= -10.455242308087776 ,  chi2eff= 20.91048461617555
+-> for  Planck_lensing :  loglkl= -5.057382726957039 ,  chi2eff= 10.114765453914078
+-> for  Pantheon_Plus_test :  loglkl= -706.9558496810174 ,  chi2eff= 1413.9116993620348
+-> for  sh0es :  loglkl= -0.21079284019204128 ,  chi2eff= 0.42158568038408256
+-> for  desi_2025_gaussian_bao_all :  loglkl= -5.496531948718286 ,  chi2eff= 10.993063897436572
+-> Total:  loglkl= -6547.376517186339 ,  chi2eff= 13094.753034372678
+
+3pd
+-> for  Planck_CamSpec_NPIPE12_7_TTTEEE :  loglkl= -5619.578137657862 ,  chi2eff= 11239.156275315723
+-> for  Planck_lowl_EE :  loglkl= -198.39755599601935 ,  chi2eff= 396.7951119920387
+-> for  Planck_lowl_TT :  loglkl= -10.948057175645289 ,  chi2eff= 21.896114351290578
+-> for  Planck_lensing :  loglkl= -4.9194727180011935 ,  chi2eff= 9.838945436002387
+-> for  Pantheon_Plus_test :  loglkl= -706.5533169040542 ,  chi2eff= 1413.1066338081084
+-> for  desi_2025_gaussian_bao_all :  loglkl= -6.048827215129982 ,  chi2eff= 12.097654430259963
+-> Total:  loglkl= -6546.445367666711 ,  chi2eff= 13092.890735333422
+
+3psd
+-> for  Planck_CamSpec_NPIPE12_7_TTTEEE :  loglkl= -5620.578529936015 ,  chi2eff= 11241.15705987203
+-> for  Planck_lowl_EE :  loglkl= -198.40333975334488 ,  chi2eff= 396.80667950668976
+-> for  Planck_lowl_TT :  loglkl= -10.571345645226046 ,  chi2eff= 21.142691290452092
+-> for  Planck_lensing :  loglkl= -5.037156944586177 ,  chi2eff= 10.074313889172354
+-> for  Pantheon_Plus_test :  loglkl= -706.9644736923872 ,  chi2eff= 1413.9289473847743
+-> for  sh0es :  loglkl= -0.11523555829903438 ,  chi2eff= 0.23047111659806876
+-> for  desi_2025_gaussian_bao_all :  loglkl= -5.534355716754267 ,  chi2eff= 11.068711433508534
+-> Total:  loglkl= -6547.2044372466125 ,  chi2eff= 13094.408874493225
